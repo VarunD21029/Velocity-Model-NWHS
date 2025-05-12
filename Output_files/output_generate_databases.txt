@@ -1,0 +1,361 @@
+
+ *****************************************
+ *** Specfem3D MPI database generation ***
+ *****************************************
+
+ Running Git package version of the code: v4.1.0-1-gbf45798f
+ which is Git bf45798f3af9d792326a829de920fd944cf7c7dd
+ dating 2023-12-20 23:03:42 +0100
+
+ This is process            0
+ There are          100  MPI processes
+ Processes are numbered from 0 to           99
+
+ There is a total of          100  slices
+
+ NGLLX =            5
+ NGLLY =            5
+ NGLLZ =            5
+
+ Shape functions defined by NGNOD =            8  control nodes
+ Surface shape functions defined by NGNOD2D =            4  control nodes
+ Beware! Curvature (i.e. HEX27 elements) is not handled by our internal mesher
+
+ velocity model:   tomo
+
+
+ using UTM projection in region           43
+
+ no attenuation
+
+ no anisotropy
+
+ no oceans
+
+ incorporating Stacey absorbing conditions
+
+ using a CMTSOLUTION source
+   with a Gaussian source time function
+
+
+ ************************************
+ reading partition files in the model
+ ************************************
+
+ external mesh points :    156416100
+ defined materials    :            1
+ undefined materials  :            0
+ total number of spectral elements:     19069600
+ absorbing boundaries: 
+   xmin,xmax :        27280       27280
+   ymin,ymax :        27280       27280
+   bottom,top:        48400      774400
+
+   total number of C-PML elements in the global mesh:            0
+
+ number of MPI partition interfaces:          684
+
+   minimum memory used so far     :    680.820679     MB per process
+   minimum total memory requested :    3074.10913     MB per process
+
+ create regions:
+
+   ...allocating arrays 
+     NGLLX   =            5
+     NGLLY   =            5
+     NGLLZ   =            5
+     NGNOD   =            8
+     NGNOD2D =            4
+
+     main process setup: 
+     nspec           =       190696
+
+     separating regular/irregular element shapes
+     nspec regular   =            0
+     nspec irregular =       190696
+
+     absorbing boundary faces:
+       num_abs_boundary_faces =         5940
+
+     free surface faces:
+       num_free_surface_faces =         7744
+
+
+ File DATA/Par_file_faults not found: assuming that there are no faults
+
+
+   ...setting up jacobian 
+
+   ...indexing global points
+      creating ibool indexing     : x min/max =    548464.062     /   918153.312    
+      creating indirect addressing: nglob =     12358289
+      creating unique point locations
+
+   ...preparing MPI interfaces 
+      number of interfaces        :            3
+      creating MPI indexing       : x min/max =    548464.062     /   918153.312    
+                                    tolerance =    3.6968924779910225E-005
+
+      total MPI interface points:     15919020
+      total assembled MPI interface points:    15799140
+
+   ...setting up absorbing boundaries
+      boundary xmin   :       27280
+      boundary xmax   :       27280
+      boundary ymin   :       27280
+      boundary ymax   :       27280
+      boundary bottom :       48400
+      boundary top    :      774400
+      absorbing boundary:
+      total number of free faces =       774400
+      total number of faces      =       157520
+
+   ...setting up mesh surface
+
+   ...determining velocity model
+
+      number of tomographic models       =            1
+      maximum number of data records     =      1000000
+      size of required tomography arrays =    15.2587891     MB per process
+
+      material id:            1
+      file       : ./DATA/tomo_files/tomography_model.xyz
+      domain     : elastic
+      data format: #x #y #z #vp #vs #density
+      number of grid points = NX*NY*NZ:     1000000
+
+               10  % time remaining:   1.1211340658998010E-008 s
+               20  % time remaining:   9.9823154130989684E-009 s
+               30  % time remaining:   8.7332618982600606E-009 s
+               40  % time remaining:   7.5057553280209758E-009 s
+               50  % time remaining:   6.2506270146920969E-009 s
+               60  % time remaining:   5.0017274500490823E-009 s
+               70  % time remaining:   3.7482882754203570E-009 s
+               80  % time remaining:   2.4964349675573905E-009 s
+               90  % time remaining:   1.2474021811339176E-009 s
+              100  % time remaining:   3.9375110334682869E-013 s
+
+   ...detecting acoustic-elastic-poroelastic surfaces 
+      total acoustic elements   :           0
+      total elastic elements    :    19069600
+      total poroelastic elements:           0
+
+      acoustic - elastic     coupling : total number of faces =            0
+      acoustic - poroelastic coupling : total number of faces =            0
+       elastic - poroelastic coupling : total number of faces =            0
+
+
+   ...element inner/outer separation 
+      for overlapping of communications with calculations:
+      percentage of   edge elements    2.93870544     %
+      percentage of volume elements    97.0612946     %
+
+
+   ...element mesh coloring 
+      use coloring =  F
+
+   ...external binary models 
+      no external binary model used 
+
+   ...creating mass matrix 
+
+   ...saving mesh databases
+      using binary file format
+      database file (for rank 0): ./OUTPUT_FILES/DATABASES_MPI/proc000000_external_mesh.bin
+      saving mesh files for AVS, OpenDX, Paraview
+      saving additonal mesh files with surface/coupling points
+
+   ...checking mesh resolution
+ Mesh resolution:
+
+ ********
+ minimum and maximum number of elements
+ and points in the CUBIT + SCOTCH mesh:
+
+ NSPEC_global_min =       190696
+ NSPEC_global_max =       190696
+ NSPEC_global_max / NSPEC_global_min imbalance =    1.00000000      =    0.00000000      %
+ NSPEC_global_sum =     19069600
+
+ NGLOB_global_min =     12358289
+ NGLOB_global_max =     12358289
+ NGLOB_global_max / NGLOB_global_min imbalance =    1.00000000      =    0.00000000      %
+ NGLOB_global_sum =   1235828900
+
+ If you have elements of a single type (all acoustic, all elastic, all poroelastic, and without CPML)
+ in the whole mesh, then there should be no significant imbalance in the above numbers.
+ Otherwise, it is normal to have imbalance in elements and points because the domain decomposer
+ compensates for the different cost of different elements by partitioning them unevenly among processes.
+ ********
+
+
+ ********
+ Model: P   velocity min,max =    1220.51050       8129.29492    
+ Model: S   velocity min,max =    411.735291       4672.51172    
+
+ Model: Poisson's ratio min,max =   0.188040540      0.449340582    
+ ********
+
+ *********************************************
+ *** Verification of simulation parameters ***
+ *********************************************
+
+ *** Xmin and Xmax of the model =    548464.062       918153.312    
+ *** Ymin and Ymax of the model =    3263487.50       3715793.75    
+ *** Zmin and Zmax of the model =   -50000.0000       6411.80615    
+
+ *** Max GLL point distance =    944.214844    
+ *** Min GLL point distance =    72.5000000    
+ *** Max/min ratio =    13.0236530    
+
+ *** Max element size =    2884.61719    
+ *** Min element size =    420.062500    
+ *** Max/min ratio =    6.86711407    
+
+ *** Minimum period resolved =    1.56046879    
+ *** Maximum suggested time step =    5.15000010E-03
+
+ Elapsed time for checking mesh resolution in seconds =   0.70950513200000387     
+ saving VTK files for Courant number and minimum period
+
+
+ mesh regions done
+
+ min and max of elevation (i.e. height of the upper surface of the mesh) included in mesh in m is    211.00945422630070          6411.8059240756302     
+
+
+ done mesh setup
+
+
+ Repartition of elements:
+ -----------------------
+
+ load distribution:
+   element loads: min/max =      7818536     7818536
+
+   partition            0        has      7818536  load units
+   partition            1        has      7818536  load units
+   partition            2        has      7818536  load units
+   partition            3        has      7818536  load units
+   partition            4        has      7818536  load units
+   partition            5        has      7818536  load units
+   partition            6        has      7818536  load units
+   partition            7        has      7818536  load units
+   partition            8        has      7818536  load units
+   partition            9        has      7818536  load units
+   partition           10        has      7818536  load units
+   partition           11        has      7818536  load units
+   partition           12        has      7818536  load units
+   partition           13        has      7818536  load units
+   partition           14        has      7818536  load units
+   partition           15        has      7818536  load units
+   partition           16        has      7818536  load units
+   partition           17        has      7818536  load units
+   partition           18        has      7818536  load units
+   partition           19        has      7818536  load units
+   partition           20        has      7818536  load units
+   partition           21        has      7818536  load units
+   partition           22        has      7818536  load units
+   partition           23        has      7818536  load units
+   partition           24        has      7818536  load units
+   partition           25        has      7818536  load units
+   partition           26        has      7818536  load units
+   partition           27        has      7818536  load units
+   partition           28        has      7818536  load units
+   partition           29        has      7818536  load units
+   partition           30        has      7818536  load units
+   partition           31        has      7818536  load units
+   partition           32        has      7818536  load units
+   partition           33        has      7818536  load units
+   partition           34        has      7818536  load units
+   partition           35        has      7818536  load units
+   partition           36        has      7818536  load units
+   partition           37        has      7818536  load units
+   partition           38        has      7818536  load units
+   partition           39        has      7818536  load units
+   partition           40        has      7818536  load units
+   partition           41        has      7818536  load units
+   partition           42        has      7818536  load units
+   partition           43        has      7818536  load units
+   partition           44        has      7818536  load units
+   partition           45        has      7818536  load units
+   partition           46        has      7818536  load units
+   partition           47        has      7818536  load units
+   partition           48        has      7818536  load units
+   partition           49        has      7818536  load units
+   partition           50        has      7818536  load units
+   partition           51        has      7818536  load units
+   partition           52        has      7818536  load units
+   partition           53        has      7818536  load units
+   partition           54        has      7818536  load units
+   partition           55        has      7818536  load units
+   partition           56        has      7818536  load units
+   partition           57        has      7818536  load units
+   partition           58        has      7818536  load units
+   partition           59        has      7818536  load units
+   partition           60        has      7818536  load units
+   partition           61        has      7818536  load units
+   partition           62        has      7818536  load units
+   partition           63        has      7818536  load units
+   partition           64        has      7818536  load units
+   partition           65        has      7818536  load units
+   partition           66        has      7818536  load units
+   partition           67        has      7818536  load units
+   partition           68        has      7818536  load units
+   partition           69        has      7818536  load units
+   partition           70        has      7818536  load units
+   partition           71        has      7818536  load units
+   partition           72        has      7818536  load units
+   partition           73        has      7818536  load units
+   partition           74        has      7818536  load units
+   partition           75        has      7818536  load units
+   partition           76        has      7818536  load units
+   partition           77        has      7818536  load units
+   partition           78        has      7818536  load units
+   partition           79        has      7818536  load units
+   partition           80        has      7818536  load units
+   partition           81        has      7818536  load units
+   partition           82        has      7818536  load units
+   partition           83        has      7818536  load units
+   partition           84        has      7818536  load units
+   partition           85        has      7818536  load units
+   partition           86        has      7818536  load units
+   partition           87        has      7818536  load units
+   partition           88        has      7818536  load units
+   partition           89        has      7818536  load units
+   partition           90        has      7818536  load units
+   partition           91        has      7818536  load units
+   partition           92        has      7818536  load units
+   partition           93        has      7818536  load units
+   partition           94        has      7818536  load units
+   partition           95        has      7818536  load units
+   partition           96        has      7818536  load units
+   partition           97        has      7818536  load units
+   partition           98        has      7818536  load units
+   partition           99        has      7818536  load units
+
+   load per partition: min/max   =      7818536     7818536
+   load per partition: imbalance =    0.00000000     %
+                       (0% being totally balanced, 100% being unbalanced)
+
+ total number of elements in mesh slice 0:       190696
+ total number of   regular elements in mesh slice 0:            0
+ total number of irregular elements in mesh slice 0:       190696
+ total number of points in mesh slice 0:     12358289
+
+ total number of elements in entire mesh:     19069600
+ approximate total number of points in entire mesh (with duplicates on MPI edges):            1235828900
+ approximate total number of DOFs   in entire mesh (with duplicates on MPI edges):            3707486700
+
+ total number of time steps in the solver will be:        20000
+
+ using single precision for the calculations
+
+ smallest and largest possible floating-point numbers are:    1.17549435E-38   3.40282347E+38
+
+
+ Elapsed time for mesh generation and buffer creation in seconds =    1517.6464412840000     
+ End of mesh generation
+
+ done
+
