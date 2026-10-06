@@ -1,0 +1,151 @@
+{
+  "_description": "Fault traces, dips and down-dip geometry used to imprint fault damage zones on the NW Himalaya tomography model. Coordinates are [lon, lat] (WGS84). Each dip_profile entry is [depth_top_km, dip_deg]: the fault dips at dip_deg from depth_top_km down to the next entry (or to max_depth_km). Traces may be given in any order; the script orients them so that the fault dips towards dip_azimuth_deg.",
+
+  "settings": {
+    "utm_zone": 43,
+    "vs_reduction_vs_depth": [[0.0, 10.0], [5.0, 10.0], [20.0, 5.0]],
+    "vp_reduction_ratio": 0.0,
+    "rho_reduction_ratio": 0.0,
+    "damage_zone_half_width_km": 1.5,
+    "taper_width_factor": 0.5,
+    "end_taper_km": 10.0,
+    "splay_termination_margin_km": 0.0,
+    "_notes": {
+      "vs_reduction_vs_depth": "[depth_km, Vs reduction %] pairs, linearly interpolated, last value held below. Default: 10% at the surface (down to 5 km), easing to 5% at 20 km, so damage is strongest in the shallow brittle crust. Use [[0,10]] for a uniform 10% along the whole fault plane.",
+      "vp_reduction_ratio": "Vp reduction as a fraction of the Vs reduction (0 = Vp unchanged, 1 = same % as Vs).",
+      "rho_reduction_ratio": "Density reduction as a fraction of the Vs reduction (0 = density unchanged).",
+      "damage_zone_half_width_km": "Physical half-width of the fault damage zone, measured normal to the fault plane. It is widened where needed so the ~4.1-4.7 km horizontal / 0.5 km vertical tomography grid can resolve the zone (see README).",
+      "taper_width_factor": "Outside the core zone the reduction falls to zero with a cosine taper this many core half-widths wide.",
+      "end_taper_km": "Along-strike cosine taper beyond the ends of each trace.",
+      "splay_termination_margin_km": "Splay thrusts (terminate_at_mht = true) stop where they reach the MHT, plus this margin (they merge into the MHT damage zone there)."
+    }
+  },
+
+  "faults": [
+    {
+      "name": "MFT / Main Himalayan Thrust (MHT)",
+      "short": "MFT",
+      "type": "thrust",
+      "is_mht": true,
+      "dip_azimuth_deg": 25,
+      "dip_profile": [[0, 30], [5, 6], [12, 15]],
+      "max_depth_km": 20,
+      "trace_source": "HimaTibetMap (Styron et al., 2010) via the GEM Global Active Faults database (Styron & Pagani, 2020); NW of 75.7E extended by hand along the Siwalik front towards Jammu and joined to the GEM/EMME Salt Range segment.",
+      "geometry_note": "Frontal ramp ~30 deg to 5 km, flat decollement ~6 deg to ~12 km beneath the Lesser Himalaya (75 km north of the front), mid-crustal ramp ~15 deg to ~20 km beneath the Higher Himalaya, i.e. the down-dip end of the locked MHT that ruptured in 1905. Consistent with balanced sections across the Kangra re-entrant (Powers et al., 1998) and the ramp-flat MHT of Caldwell et al. (2013).",
+      "trace": [
+        [73.440, 32.626], [73.822, 32.816], [74.053, 32.977], [74.50, 32.85], [74.80, 32.68],
+        [75.05, 32.52], [75.30, 32.35], [75.55, 32.17], [75.717, 31.941], [75.795, 31.839],
+        [75.938, 31.674], [76.036, 31.505], [76.134, 31.345], [76.216, 31.232], [76.319, 31.135],
+        [76.447, 31.011], [76.586, 30.919], [76.704, 30.898], [76.812, 30.749], [76.951, 30.677],
+        [77.151, 30.600], [77.218, 30.523], [77.213, 30.456], [77.413, 30.410], [77.531, 30.307],
+        [77.649, 30.307], [77.870, 30.174], [77.973, 30.097], [78.071, 30.004], [78.235, 29.855],
+        [78.379, 29.804], [78.533, 29.783], [78.554, 29.624], [78.718, 29.552], [78.985, 29.434],
+        [79.119, 29.383], [79.221, 29.326], [79.376, 29.311], [79.440, 29.267], [79.599, 29.205],
+        [79.753, 29.098], [79.907, 29.072], [80.092, 29.092], [80.139, 29.113]
+      ]
+    },
+    {
+      "name": "Jwalamukhi Thrust (JMT)",
+      "short": "JMT",
+      "type": "thrust",
+      "terminate_at_mht": true,
+      "dip_azimuth_deg": 40,
+      "dip_profile": [[0, 35], [4, 25]],
+      "max_depth_km": 15,
+      "trace_source": "Approximate, hand-placed from regional maps of the Kangra re-entrant (e.g. Powers et al., 1998; Thakur, 2004).",
+      "geometry_note": "Listric splay, ~35 deg near surface flattening to ~25 deg, soling into the MHT decollement.",
+      "trace": [
+        [75.75, 32.35], [76.05, 32.10], [76.32, 31.87], [76.50, 31.62], [76.58, 31.33], [76.72, 31.05]
+      ]
+    },
+    {
+      "name": "Main Boundary Thrust (MBT)",
+      "short": "MBT",
+      "type": "thrust",
+      "terminate_at_mht": true,
+      "dip_azimuth_deg": 30,
+      "dip_profile": [[0, 45], [4, 35], [8, 25]],
+      "max_depth_km": 20,
+      "trace_source": "Approximate, hand-placed from regional maps (e.g. Thakur, 2004; Yin, 2006): Murree/Riasi thrust near Jammu, Dharamsala, Kalka, Dehradun-Mussoorie, Kathgodam.",
+      "geometry_note": "Steep (~45 deg) at the surface, listric, soling into the MHT at ~10-12 km depth.",
+      "trace": [
+        [74.50, 33.25], [74.85, 33.10], [75.15, 32.93], [75.55, 32.72], [75.95, 32.48],
+        [76.30, 32.22], [76.60, 32.00], [76.80, 31.70], [76.85, 31.35], [77.00, 31.00],
+        [77.15, 30.82], [77.50, 30.62], [77.85, 30.45], [78.10, 30.38], [78.40, 30.15],
+        [78.75, 29.85], [79.10, 29.60], [79.50, 29.40], [79.80, 29.25]
+      ]
+    },
+    {
+      "name": "Main Central Thrust (MCT)",
+      "short": "MCT",
+      "type": "thrust",
+      "terminate_at_mht": true,
+      "dip_azimuth_deg": 30,
+      "dip_profile": [[0, 35], [6, 25]],
+      "max_depth_km": 25,
+      "trace_source": "Approximate, hand-placed from regional maps (e.g. Yin, 2006): Kishtwar, north of the Dhauladhar, Kullu, Sutlej valley (Jeori), Bhagirathi (Bhatwari), Alaknanda (Helang).",
+      "geometry_note": "~35 deg near surface flattening to ~25 deg, joining the MHT near the top of the mid-crustal ramp.",
+      "trace": [
+        [75.40, 33.50], [75.75, 33.25], [76.20, 32.85], [76.70, 32.55], [77.10, 32.15],
+        [77.45, 31.80], [77.80, 31.50], [78.15, 31.20], [78.50, 30.95], [78.85, 30.75],
+        [79.25, 30.60], [79.60, 30.50]
+      ]
+    },
+    {
+      "name": "South Tibetan Detachment (STD) / Zanskar Shear Zone",
+      "short": "STD",
+      "type": "normal",
+      "dip_azimuth_deg": 30,
+      "dip_profile": [[0, 25]],
+      "max_depth_km": 15,
+      "trace_source": "Approximate, hand-placed from regional maps (e.g. Yin, 2006).",
+      "geometry_note": "Low-angle (~25 deg) north-dipping normal-sense detachment, kept to the upper 15 km.",
+      "trace": [
+        [76.50, 33.50], [77.00, 33.15], [77.45, 32.75], [77.85, 32.30], [78.25, 31.85],
+        [78.65, 31.40], [79.10, 31.00], [79.50, 30.75], [79.80, 30.60]
+      ]
+    },
+    {
+      "name": "Kaurik-Chango Fault",
+      "short": "KCF",
+      "type": "normal",
+      "dip_azimuth_deg": 270,
+      "dip_profile": [[0, 60]],
+      "max_depth_km": 15,
+      "trace_source": "HimaTibetMap (Styron et al., 2010) via the GEM Global Active Faults database.",
+      "geometry_note": "Steep west-dipping normal fault (1975 Kinnaur earthquake), kept to the upper 15 km.",
+      "trace": [
+        [79.322, 32.485], [79.296, 32.465], [79.266, 32.434], [79.242, 32.396], [79.219, 32.367],
+        [79.186, 32.334], [79.166, 32.310], [79.149, 32.286], [79.132, 32.264], [79.103, 32.234],
+        [79.092, 32.213], [79.072, 32.193], [79.042, 32.150], [79.025, 32.127], [79.003, 32.090],
+        [78.988, 32.069], [78.981, 32.046], [78.953, 32.017], [78.931, 31.994], [78.916, 31.966],
+        [78.902, 31.937]
+      ]
+    },
+    {
+      "name": "Karakoram Fault",
+      "short": "KKF",
+      "type": "strike-slip",
+      "dip_azimuth_deg": 45,
+      "dip_profile": [[0, 80]],
+      "max_depth_km": 25,
+      "trace_source": "HimaTibetMap (Styron et al., 2010) via the GEM Global Active Faults database (segment within/near the model).",
+      "geometry_note": "Near-vertical dextral fault (~80 deg NE), through the seismogenic crust.",
+      "trace": [
+        [80.300, 31.640], [80.278, 31.711], [80.201, 31.851], [80.111, 31.953], [80.009, 32.040],
+        [79.922, 32.169], [79.886, 32.249], [79.710, 32.435], [79.560, 32.614], [79.458, 32.704],
+        [79.272, 32.907], [79.019, 33.165], [78.901, 33.302], [78.786, 33.420], [78.663, 33.598],
+        [78.600, 33.730], [78.411, 33.971]
+      ]
+    }
+  ],
+
+  "references": [
+    "Caldwell, W. B., et al. (2013). Characterizing the Main Himalayan Thrust in the Garhwal Himalaya, India with receiver function CCP stacking. EPSL 367, 15-27.",
+    "Powers, P. M., Lillie, R. J., & Yeats, R. S. (1998). Structure and shortening of the Kangra and Dehra Dun reentrants, Sub-Himalaya, India. GSA Bulletin 110, 1010-1027.",
+    "Styron, R., Taylor, M., & Okoronkwo, K. (2010). Database of active structures from the Indo-Asian collision. Eos 91(20), 181-182.",
+    "Styron, R., & Pagani, M. (2020). The GEM Global Active Faults Database. Earthquake Spectra 36(1_suppl), 160-180.",
+    "Thakur, V. C. (2004). Active tectonics of Himalayan Frontal Thrust and seismic hazard to Ganga Plain. Current Science 86(11), 1554-1560.",
+    "Yin, A. (2006). Cenozoic tectonic evolution of the Himalayan orogen as constrained by along-strike variation of structural geometry, exhumation history, and foreland sedimentation. Earth-Science Reviews 76, 1-131."
+  ]
+}
