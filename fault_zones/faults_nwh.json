@@ -26,12 +26,21 @@
       "name": "MFT / Main Himalayan Thrust (MHT)",
       "short": "MFT",
       "type": "thrust",
-      "is_mht": true,
       "dip_azimuth_deg": 25,
-      "dip_profile": [[0, 30], [5, 6], [12, 15]],
-      "max_depth_km": 20,
+      "mht_geometry": {
+        "frontal_ramp_dip_deg": 30,
+        "frontal_ramp_bottom_km": 5,
+        "upper_flat_dip_deg": 3.5,
+        "ramp_anchor": "MCT",
+        "ramp_top_offset_km": -10,
+        "ramp_dip_deg": 15,
+        "ramp_bottom_km": 22,
+        "lower_flat_dip_deg": 6,
+        "_notes": "Flat-ramp-flat MHT. Frontal ramp (MFT) to 5 km, gently dipping upper flat (decollement) beneath the Sub- and Lesser Himalaya, mid-crustal ramp whose top lies ramp_top_offset_km from the surface trace of ramp_anchor (negative = south/up-dip of it) down to ramp_bottom_km, then a lower flat beneath the Higher and Tethyan Himalaya down to max_depth_km. Because the ramp is tied to the MCT, the depth of the upper flat at the ramp top varies along strike (deeper in the wide Kangra re-entrant, shallower in Garhwal-Kumaon)."
+      },
+      "max_depth_km": 30,
       "trace_source": "HimaTibetMap (Styron et al., 2010) via the GEM Global Active Faults database (Styron & Pagani, 2020); NW of 75.7E extended by hand along the Siwalik front towards Jammu and joined to the GEM/EMME Salt Range segment.",
-      "geometry_note": "Frontal ramp ~30 deg to 5 km, flat decollement ~6 deg to ~12 km beneath the Lesser Himalaya (75 km north of the front), mid-crustal ramp ~15 deg to ~20 km beneath the Higher Himalaya, i.e. the down-dip end of the locked MHT that ruptured in 1905. Consistent with balanced sections across the Kangra re-entrant (Powers et al., 1998) and the ramp-flat MHT of Caldwell et al. (2013).",
+      "geometry_note": "Single basal decollement of the Himalayan thrust system. Frontal ramp ~30 deg to 5 km; upper flat ~3.5 deg reaching ~9-13 km beneath the Lesser Himalaya; mid-crustal ramp ~15 deg starting ~10 km south of the MCT trace and reaching ~22 km beneath the Higher Himalaya (the locked-to-creeping transition, where the Himalayan microseismicity belt and the 1991 Uttarkashi / 1999 Chamoli events lie); lower flat ~6 deg to 30 km beneath the Higher/Tethyan Himalaya. JMT, MBT and MCT all root into it. Geometry follows the flat-ramp-flat MHT seen in balanced sections (Powers et al., 1998; Srivastava & Mitra, 1994) and receiver-function images (Caldwell et al., 2013).",
       "trace": [
         [73.440, 32.626], [73.822, 32.816], [74.053, 32.977], [74.50, 32.85], [74.80, 32.68],
         [75.05, 32.52], [75.30, 32.35], [75.55, 32.17], [75.717, 31.941], [75.795, 31.839],
@@ -51,9 +60,9 @@
       "terminate_at_mht": true,
       "dip_azimuth_deg": 40,
       "dip_profile": [[0, 35], [4, 25]],
-      "max_depth_km": 15,
+      "max_depth_km": 40,
       "trace_source": "Approximate, hand-placed from regional maps of the Kangra re-entrant (e.g. Powers et al., 1998; Thakur, 2004).",
-      "geometry_note": "Listric splay, ~35 deg near surface flattening to ~25 deg, soling into the MHT decollement.",
+      "geometry_note": "Listric splay, ~35 deg near surface flattening to ~25 deg, rooting into the MHT upper flat (max_depth is only a safety limit; the fault stops where it meets the MHT).",
       "trace": [
         [75.75, 32.35], [76.05, 32.10], [76.32, 31.87], [76.50, 31.62], [76.58, 31.33], [76.72, 31.05]
       ]
@@ -65,9 +74,9 @@
       "terminate_at_mht": true,
       "dip_azimuth_deg": 30,
       "dip_profile": [[0, 45], [4, 35], [8, 25]],
-      "max_depth_km": 20,
+      "max_depth_km": 40,
       "trace_source": "Approximate, hand-placed from regional maps (e.g. Thakur, 2004; Yin, 2006): Murree/Riasi thrust near Jammu, Dharamsala, Kalka, Dehradun-Mussoorie, Kathgodam.",
-      "geometry_note": "Steep (~45 deg) at the surface, listric, soling into the MHT at ~10-12 km depth.",
+      "geometry_note": "Steep (~45 deg) at the surface, listric, rooting into the MHT upper flat at ~10-12 km depth.",
       "trace": [
         [74.50, 33.25], [74.85, 33.10], [75.15, 32.93], [75.55, 32.72], [75.95, 32.48],
         [76.30, 32.22], [76.60, 32.00], [76.80, 31.70], [76.85, 31.35], [77.00, 31.00],
@@ -82,9 +91,9 @@
       "terminate_at_mht": true,
       "dip_azimuth_deg": 30,
       "dip_profile": [[0, 35], [6, 25]],
-      "max_depth_km": 25,
+      "max_depth_km": 40,
       "trace_source": "Approximate, hand-placed from regional maps (e.g. Yin, 2006): Kishtwar, north of the Dhauladhar, Kullu, Sutlej valley (Jeori), Bhagirathi (Bhatwari), Alaknanda (Helang).",
-      "geometry_note": "~35 deg near surface flattening to ~25 deg, joining the MHT near the top of the mid-crustal ramp.",
+      "geometry_note": "~35 deg near surface flattening to ~25 deg, rooting into the MHT below the mid-crustal ramp (on the lower flat).",
       "trace": [
         [75.40, 33.50], [75.75, 33.25], [76.20, 32.85], [76.70, 32.55], [77.10, 32.15],
         [77.45, 31.80], [77.80, 31.50], [78.15, 31.20], [78.50, 30.95], [78.85, 30.75],
@@ -142,6 +151,7 @@
 
   "references": [
     "Caldwell, W. B., et al. (2013). Characterizing the Main Himalayan Thrust in the Garhwal Himalaya, India with receiver function CCP stacking. EPSL 367, 15-27.",
+    "Srivastava, P., & Mitra, G. (1994). Thrust geometries and deep structure of the outer and lesser Himalaya, Kumaon and Garhwal (India): Implications for evolution of the Himalayan fold-and-thrust belt. Tectonics 13(1), 89-109.",
     "Powers, P. M., Lillie, R. J., & Yeats, R. S. (1998). Structure and shortening of the Kangra and Dehra Dun reentrants, Sub-Himalaya, India. GSA Bulletin 110, 1010-1027.",
     "Styron, R., Taylor, M., & Okoronkwo, K. (2010). Database of active structures from the Indo-Asian collision. Eos 91(20), 181-182.",
     "Styron, R., & Pagani, M. (2020). The GEM Global Active Faults Database. Earthquake Spectra 36(1_suppl), 160-180.",
